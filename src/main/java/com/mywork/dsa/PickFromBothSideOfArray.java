@@ -9,13 +9,15 @@ for(int i=0;i<A.length;i++){
     System.out.println(solve(A,B));
   }
   public static int solve(int[] A, int B) {
-  
-  int a[]=new int[A.length];
+  if(B==0) return 0;
+        int a[]=new int[A.length];
         a[0]=A[0];
         for(int i=1;i<A.length;i++){
             a[i]=A[i]+a[i-1];
         }
-           for(int i=0;i<A.length;i++){
+        if(B==A.length) return a[a.length-1];
+           
+        for(int i=0;i<A.length;i++){
             System.out.print(a[i]+"  ");
         }
         System.out.println();
