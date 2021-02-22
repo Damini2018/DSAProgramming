@@ -28,7 +28,7 @@ for(int i=0;i<A.length;i++){
             System.out.println("B-i = "+i+"   index = "+index+"    sum = "+sum1+"  a[i] = "+a[i]+"  a[index-1] = " + (a[A.length-1]-a[index-1]));
             if(sum<sum1) sum=sum1;
         }
-        return sum;
+        return Math.max(sum,(a[A.length-1]-a[A.length-B-1]));
 
     }
 }
