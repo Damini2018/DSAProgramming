@@ -1,0 +1,66 @@
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    String A[] = {"cat", "dog", "god", "tca"};
+    int [][] a= anagrams(A);
+    for(int i=0;i<a.length;i++){
+      for(int j=0;j<a[i].length;j++){
+        System.out.print(a[i][j]+" ");
+        }
+
+System.out.println();
+ 	}
+    //System.out.println(convertToTitle(A));
+  }
+   public static int[][] anagrams(final String[] A) {
+   HashMap<String,ArrayList<Integer>> map= new HashMap<>();
+        for(int i=0;i<A.length;i++){
+            ArrayList<Integer> al=null;
+            char[] ch= A[i].toCharArray();
+            Arrays.sort(ch);
+               if(map.containsKey(String.valueOf(ch))) {
+                  al=map.get(String.valueOf(ch));
+                  al.add(i);
+                  map.put(String.valueOf(ch),al);
+                }
+                else {
+                al=new ArrayList();
+                al.add(i);
+                map.put(String.valueOf(ch),al);
+                }
+        }
+        int [][]ar=new int[map.size()][];
+        int j=0;
+        for(int i=0;i<A.length;i++){
+            char[] ch= A[i].toCharArray();
+            Arrays.sort(ch);
+            if(map.containsKey(String.valueOf(ch))){
+           
+               ArrayList<Integer> al=map.get(String.valueOf(ch));
+               ar[j]= new int[al.size()];
+               for(int p=0;p<ar[j].length;p++){
+                  ar[j][p]=al.get(p)+1; 
+               }
+              j++;
+               map.remove(String.valueOf(ch));
+           }
+            
+            
+            }
+        return ar;
+        //new int[map.size()][];
+        
+       
+     }
+     
+     }
+     
+     
+     
+     
+     //Approach
+     //Create a Hashmap whose key will be sorted string and value will be list of those string indexes which are permutation of this string
+     //at end create 2 D array to store the indexes and from map try iterating map value and store in that 2 D array
+     // return the array
