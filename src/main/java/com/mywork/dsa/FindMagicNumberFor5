@@ -1,0 +1,42 @@
+// Java program to find nth 
+// magic numebr 
+import java.io.*; 
+  
+class GFG  
+{ 
+public static void main(String[] args) 
+  { 
+    int n = 5; 
+    System.out.println("nth magic" + 
+    " number is " + nthMagicNo(n)); 
+  } 
+  // Function to find nth magic number 
+  public static int nthMagicNo(int n) 
+  { 
+     int pow = 1, answer = 0; 
+   
+     // Go through every bit of n 
+     while (n != 0) 
+     { 
+       pow = pow*5; 
+         
+       if ((int)(n & 1) == 1) 
+         answer += pow; 
+        
+       n >>= 1;   
+     } 
+     return answer; 
+  } 
+
+} 
+
+
+
+//Given an integer A, find and return the Ath magic number.
+
+//A magic number is defined as a number which can be expressed as a power of 5 or sum of unique powers of 5.
+
+//First few magic numbers are 5, 25, 30(5 + 25), 125, 130(125 + 5), ….
+//approach 
+//the solution can be seen as n in its binary representation and set bits position will tell the pow of 5
+//while loop will increment the power and if the last bit is set then we need to add to the answer
