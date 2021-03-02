@@ -1,0 +1,29 @@
+public class Main {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    int A=26;
+    System.out.println(trailingZeroes(A));
+    
+  }
+  public static  int trailingZeroes(int A) {
+        int count=0;
+        int div= 5;
+        while(A>0){
+            count+=A/div;
+            A=A/5;
+        }
+        return count;
+    }
+}
+
+
+//given a number find the total count of 0 at the end in the factorial of it
+//Approach
+// 0 will be because of 5*2
+// if A= 5 then fact(5)= 120
+// 1x2x3x4x5  as count of 2 will keep on increasing as the value of A will increase but the count of 5 will not
+//total #0 = Min(#2,#5)
+//in our case #5 is always min hence count #5
+// if A=25 #5 =1-5,1-10,1-15,1-20,2-25 so total count=6
+//if A=125 then in the similar manner 3-125 
+//hence to count the total 5 keep on dividing A until it is equal to 1 and add those numbers
