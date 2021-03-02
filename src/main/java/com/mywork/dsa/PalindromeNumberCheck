@@ -1,0 +1,51 @@
+public class Main {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    int A= 13231;
+    System.out.println(isPalindrome(A));
+  }
+
+ public static int isPalindrome(int A) {
+          
+        int a =0;
+        int B=A;
+        while(A>0){
+            a=a*10;
+            a+=A%10;
+            A=A/10;
+        }
+        return (a==B)?1:0;
+    }
+
+}
+// without using extra  space which will be decided by flag
+ public static int isPalindrome(int A,boolean flag) {
+       int divisor = 1; 
+        while (A/ divisor >= 10) 
+            divisor *= 10; 
+       
+        while (A!= 0) 
+        { 
+            int leading = A/ divisor;  
+            int trailing = A% 10; 
+       
+            
+            if (leading != trailing)   
+                return 0; 
+       
+            
+            A=A%divisor;
+            A/=10;
+            //A= (A% divisor) / 10; //other way of doing the above
+       
+           divisor = divisor / 100; 
+        } 
+        return 1; 
+    }
+
+}
+
+//with and without using extra space
+//without using means the same number we have to manipulate 
+//so take the 1st elemnt using divisor and last element as %10 and compare
+//divisor will be redused by 100 as we are reducing the actual number 1-1 digit from start and end
