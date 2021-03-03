@@ -1,0 +1,35 @@
+import java.util.*;
+public class CountStringOccuranceInGivenString {
+   public static void main(String[] args) {
+    System.out.println("Hello World!");
+    String A= "abobc";
+    String B="bob";
+    System.out.println("The occurance of B in A = "+solve(A,B));
+  }
+   public static int solve(String A,String B) {
+       if(A.length()<3) return 0;
+        HashSet<Integer> set = new HashSet();
+        int count=0;
+        for(int i=0;i<A.length();i++){
+            if(A.charAt(i)==B.charAt(0)) set.add(i);
+        }
+        Iterator<Integer> it = set.iterator();
+        
+        while(it.hasNext()){
+        
+            int start= it.next();
+            if((start+3)>A.length()) continue;
+            String s=A.substring(start,start+3);
+            if(B.equals(s) )count++;
+            
+        }
+        return count;
+    }
+}
+
+/problem
+Find number of occurrences of B in the string A consisting of lowercase english alphabets.
+//Approach
+//creating a set to store the index of B's first character
+//iterate the indeces and check if the substring is equal to bob then increment the count
+
