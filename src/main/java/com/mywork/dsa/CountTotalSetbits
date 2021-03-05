@@ -1,0 +1,44 @@
+import java.util.*;
+public class CountTotalSetbits {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    System.out.println(solve(4));
+  }
+   public static  int solve(int n) {
+    int bitCount = 0;
+        for (int i = 1; i <= n; i++)
+            bitCount += countSetBits(i);
+       return bitCount% 1000000007;
+    }
+     
+    
+   public  static int countSetBits( int x)
+    {
+        if (x <= 0)
+            return 0;
+            if(x==1 || x==2) return 1;
+            if(x==3 ) return 2;
+        return (x % 2 == 0 ? 0 : 1) + 
+               countSetBits(x / 2);
+    }
+}
+
+
+//count total set bit from 1 to N
+//approach
+//if you write down binary representation you see a pattern
+//1   01
+//2   10
+//3   11
+//4   100
+//5   101
+//6   110
+//7   111
+//8   100
+//9   1001
+//10  1010
+//11  1011
+
+// every number is having all bit representation of its half and 1 extra bit at the end
+//if the number is even then it will have same set bit count of its half
+//if number is odd then it will have same set bit count of its half + 1 extra for the odd
