@@ -41,4 +41,5 @@ public class LongestCommonPrefixString {
 //find the length of a smallest string in array thet will be out longest string prefix
 //iterate from 0 to longest index character of each string in array
 //if without breaking the condition the outer for loop end means all string in the array have common prefix of length longest
-//if the loop terminates such that i<longest menas till i-1 characters are same in all the strings so return them
+//if the loop terminates such that i<longest menas till i-2 characters are same in all the strings, at i-1 index we got to know about this but at the stop condition i-1 has became i 
+//thats why from index 0 to go until i-1
