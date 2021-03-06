@@ -1,0 +1,44 @@
+import java.util.*;
+public class LongestCommonPrefixString {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    String A[]={"ab","abc","efg"};
+    System.out.println(longestCommonPrefix(A));
+  }
+  public static  String longestCommonPrefix(String[] A) {
+        if(A.length ==1) return A[0];
+       int longest= Integer.MAX_VALUE;
+        for(int i=0;i<A.length;i++){
+            if(A[i].length()<longest) longest= A[i].length();
+        }
+        int i=0;
+        //System.out.println("Hello the smallest number is = "+longest);
+        boolean stop= false;
+        boolean flag=false;
+        for( i=0;i<longest  ;i++){
+        if(stop) break;
+            char c= A[0].charAt(i);
+            for(int j=1;j<A.length ;j++){
+            char c1=A[j].charAt(i);
+                if(c !=A[j].charAt(i)) {stop =true; }
+              //System.out.println(" the char is "+c1);  
+            }
+       }
+        if(i<longest)  return A[0].substring(0,i-1);
+        else return A[0].substring(0,longest);
+    
+    }
+
+}
+
+
+//problem
+//Given the array of strings A, you need to find the longest string S which is the prefix of ALL the strings in the array.
+//Longest common prefix for a pair of strings S1 and S2 is the longest string S which is the prefix of both S1 and S2.
+//For Example: longest common prefix of "abcdefgh" and "abcefgh" is "abc".
+
+//solution
+//find the length of a smallest string in array thet will be out longest string prefix
+//iterate from 0 to longest index character of each string in array
+//if without breaking the condition the outer for loop end means all string in the array have common prefix of length longest
+//if the loop terminates such that i<longest menas till i-1 characters are same in all the strings so return them
