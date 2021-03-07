@@ -1,0 +1,58 @@
+import java.util.*;
+public class IntersectionOf2SortedArray {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    //String A[]={"abde","abc","aefg"};
+    int []A= {-4,3};
+    int []B={-2,-2};
+    int c[]=solve(A,B);
+    System.out.println("hello");
+    for(int k=0;k<c.length;k++){
+    System.out.print(c[k]+" ");
+    }
+    System.out.println("hello");
+  }
+  public static int[] solve(final int[] A, final int[] B) {
+        int[] c=new  int[A.length+B.length];
+        int i=0; int j=0;
+        int k=0;
+        for( k=0;k<c.length;k++){
+            if(i<A.length && j<B.length){
+                if(A[i]<=B[j]) {
+                
+                    c[k]=A[i++];
+                }
+                else{
+                    c[k]=B[j++];
+                }
+            }
+            else break;
+            System.out.println("k = "+k+"  "+c[k]);
+        }
+        if(k<c.length){
+            if(i<A.length){
+                for(;k<c.length;k++){
+                    c[k]=A[i++];
+                     System.out.println("k = "+k+"  "+c[k]);
+                }
+            }
+            else {
+                for(;k<c.length;k++){
+                    c[k]=B[j++];
+                     System.out.println("k = "+k+"  "+c[k]);
+                }
+            }
+        }
+        return c;
+    }
+
+}
+
+//approach
+//use total 3 pointers, 1 for A, 1 for B and 1 for the resultannt array
+// if(A[i]<=B[j] ) intert that at c[k] and increment i to move ahead in A
+//else insert B[j] into c[k] and increment B
+// do above steps until any of the array traversing reached to end
+//check if we have filled all element in c by comparing k
+//if not then insert the remaining element from A or B accordingly
+
