@@ -1,0 +1,36 @@
+import java.util.*;
+public class Main {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    //String A[]={"abde","abc","aefg"};
+      int A[]= {1, 2, 3, 3, 4 ,5 ,6};
+      int B[]= {3 ,3 ,5};
+      int C[]= intersect(A,B);
+      for(int i=0;i<C.length;i++){
+      System.out.print(C[i]+" ");
+     }
+     System.out.println();
+  }
+  public static int[] intersect(final int[] A, final int[] B){
+        
+       ArrayList<Integer> al= new ArrayList();
+        int i=0,j=0,k=0;
+        while(i<A.length && j<B.length){
+            if(A[i]<B[j]) i++;
+            else if(A[i]>B[j]) j++;
+            else{
+                al.add(A[i]); i++;j++;k++;
+            }
+        }
+        int arr[]= new int[k];
+    for (int p = 0; p < al.size(); p++) 
+            arr[p] = al.get(p);
+    return arr;
+    }
+
+}
+
+//find common elements in 2 sorted array
+//use 2 pointer approach and comapare the elements and increase accordingly
+//if both index elements from both array are same then insert into arraylist
+//convert the arraylist to arra and return
