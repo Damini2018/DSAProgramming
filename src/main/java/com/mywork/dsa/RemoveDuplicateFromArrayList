@@ -1,0 +1,37 @@
+import java.util.*;
+public class RemoveDuplicateFromArrayList {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    ArrayList<Integer> al = new ArrayList();
+    al.add(500);
+    al.add(500);
+    al.add(500);
+    al.add(500);
+    al.add(500);
+    al.add(500);
+    System.out.println(removeDuplicates(al));
+    
+  }
+  public static int removeDuplicates(ArrayList<Integer> a) {
+	   int next=0;int current=0;
+	  while(next < a.size()-1){
+	      if(a.get(next).intValue() ==a.get(next+1).intValue() ) next++;
+	      else {
+	          current ++;next++;
+	          a.set(current,a.get(next));
+	          
+	      }
+	  }
+	  int len=current+1;
+	  current++;
+	  //System.out.println(len);
+	  return len;
+
+	}
+}
+
+
+//maintain 2 pointers
+//next will iterate all elemenets sequentially
+//current will indicate the current index till which the elements are unique
+//comparision of arraylist elements can be done using a.get(next).intValue() else there might be some problems
