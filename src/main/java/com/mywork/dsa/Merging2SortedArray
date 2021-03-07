@@ -1,5 +1,5 @@
 import java.util.*;
-public class IntersectionOf2SortedArray {
+public class Merging2SortedArray {
   public static void main(String[] args) {
     System.out.println("Hello World!");
     //String A[]={"abde","abc","aefg"};
