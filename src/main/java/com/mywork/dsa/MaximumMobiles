@@ -1,0 +1,49 @@
+import java.util.*;
+public class MaximumMobiles {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    int A[]={ 23, 36, 58, 59 };
+    int B[]={ 3, 207, 62, 654, 939, 680, 760 };
+    int c[]= solve(A,B);
+    System.out.println();
+     for(int i=0; i<c.length;i++){
+          System.out.print(c[i]+",   ");
+        }
+        
+  }
+  public static int[] solve(int[] A, int[] B) {
+        int sum = 0;
+        int pre[]= new int[A.length];
+        pre[0]=A[0];
+        System.out.print("pre array  "+pre[0]+",   ");
+        for(int i=1; i<A.length;i++){
+           pre[i]= A[i]+pre[i-1];
+           System.out.print(pre[i]+",   ");
+        }
+        int c[]= new int[B.length];
+        for(int j=0; j<B.length;j++){
+            int count=B[j]; int sum1=sum;
+            if(count>=pre[pre.length-1]){
+                c[j]= pre.length;
+                continue;
+            }
+            for(int i=0; i<pre.length-1;i++){
+            if(pre[i+1]>count && pre[i]<=count) {
+            System.out.print(c[i]+",   ");
+            c[j]=i+1;
+                break;
+            }
+                
+            }
+        }
+        return c;
+    }
+}
+
+
+//Little pony is going to buy some mobile phones for his friends. As there many models available in the market at different prices, He is confused and wants to know the maximum distinct models of a mobile phone he can buy for his friends, given that he has a total X amount of money.
+
+//You are given an array A of size N. denoting the size of prices of different models. The array is sorted based on prices in increasing order. You are given another array B of size Q denoting the queries. In i'th query, you need to tell the maximum distinct models of mobile phones he can buy with B[i] money.
+//Approach
+// get the prefix sum array
+// to maximize the number of mobiles from same ammount try to grab as many cheap phone as possible so start from the start of Array A, hence take help of prefix sum
