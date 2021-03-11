@@ -1,0 +1,39 @@
+import java.util.*;
+public class BulbOnOffRightSide {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    int A[]={1,0,1,0};
+    System.out.println(bulbs(A));
+    int B[]={0,1,0,1};
+     System.out.println(bulbs(B));
+  }
+    public static int bulbs(int[] A) {
+        boolean flag= false;
+        int count=0;
+        for(int i=0;i<A.length;i++){
+            if(A[i]==0 && !flag) {
+                count++;
+                flag=true;
+            }
+            else if(A[i]==1 && flag){
+                count++;
+                flag=false;
+            }
+        }
+        return count;
+    }
+}
+
+
+/problem
+//N light bulbs are connected by a wire.
+//Each bulb has a switch associated with it, however due to faulty wiring, a switch also changes the state of all the bulbs to the right of current bulb.
+//Given an initial state of all bulbs, find the minimum number of switches you have to press to turn on all the bulbs.
+//You can press the same switch multiple times.
+//approach
+//bruteforce
+//check if element is 0 then call another function and toggle from that element till end of array and increment the count
+
+//optimal
+//after seeing the ) we have to toggle 1 to 0 and that 1 will agin work as 0 so by using the flag true or false we can decide whether we need to see the 1 as 0 or not
+//Tc= O(n) //traversing the array once
