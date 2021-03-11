@@ -1,0 +1,30 @@
+import java.util.*;
+public class SquareTiles {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    int A=6;
+    int B=6;
+    int C=4;
+    System.out.println(solve(A,B,C));
+  }
+    public static int solve(int A, int B, int C) {
+        int ans=0;
+        if(C>A && C>B) return 1;
+        else if(C<A && C>B){
+            return (int)Math.ceil((double)A/C);
+        }
+        else if(C<B && C>A){
+            return (int)Math.ceil((double)B/C);
+        }
+        else 
+        {
+            return ((int)Math.ceil((double)A/C))*((int)Math.ceil((double)B/C));
+        }
+    }
+}
+
+//problem
+//A city is of rectangular shape with the size A * B meters. On the occasion of the city's anniversary, a decision was taken to pave the city with square granite flagstones. Each flagstone is of the size C * C. What is the least number of flagstones needed to pave the city?
+//NOTE: It's allowed to cover the surface larger than the city, but the city has to be covered. It's not allowed to break the flagstones. The sides of flagstones should be parallel to the sides of the city.
+//approach
+//imagine the condition in if else then will get the answer
