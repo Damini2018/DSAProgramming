@@ -1,0 +1,51 @@
+import java.util.*;
+
+
+public class PermutationOfAInBString {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+   String A = "ppecqae";
+String B = "oqpoqdcaeocccaqbodccepqcqpapeqcqadqepoecpqeaedacepqpec";
+System.out.println(solve(A,B));
+  }
+  public static int solve(String A, String B) { 
+  
+  int a[]= new int [26];
+    int b[]=  new int[26];
+    int n= A.length();
+    for(int i=0;i<n;i++){
+        a[A.charAt(i)-'a']++;
+    }
+    for(int i=0;i<n;i++){
+        b[B.charAt(i)-'a']++;
+    }
+    int ans =0;
+    ans = equals(a,b);
+    for(int j=n;j<(B.length());j++)
+    {
+        b[B.charAt(j)-'a']++;
+        b[B.charAt(j-n)-'a']--;
+        ans+= equals(a,b);
+    }
+    return ans;
+ }
+public static int equals(int a[],int b[]){
+    for(int i=0;i<26;i++){
+        if(a[i] != b[i]) return 0;
+    }
+    return 1;
+  }
+
+}
+
+//problem
+//count of all permutations of A present in B as a substring. assumption is that we ahve only lower case alphabate (else create a, b array of size 52)
+//create 2 int array of size 26 to hold the freency of characters
+//fill freq_a for String A
+//apprach is using of a sliding window of size A length
+//fill freq_b for string B till length at A
+//compare freq_a and freq_b is both have same freq then ans++;
+//now iterate B from A.length+ till B.length
+//decrease the freq of first character of sliding window and increment the next character freq in B which will get add to the sliding window
+//again compare the freq_a and freq_b is both have same freq then ans++;
+//return ans
