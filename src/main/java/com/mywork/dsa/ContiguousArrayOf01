@@ -1,0 +1,36 @@
+import java.util.*;
+
+public class ContiguousArrayOf01 {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    int A[]= {0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1 };
+    System.out.println(solve(A));
+  }
+  public static int solve(int[] A) {
+        HashMap<Integer, Integer> map= new HashMap();
+        int max=0; int sum=0;
+        
+        map.put(0,-1);
+        
+        for(int i=0;i<A.length;i++){
+            sum+= (A[i]==0)? -1:1;
+            if(map.containsKey(sum)) {int p= map.get(sum);
+               int max1= i-p;
+               if(max<max1) max=max1;
+            }
+            else map.put(sum,i);
+        }
+        return max;
+        
+        }
+}
+
+
+//problem
+//Given an array of integers A consisting of only 0 and 1.Find the maximum length of a contiguous subarray with equal number of 0 and 1.
+//using prefix sum
+//to get the maximum length of array needs 1st index and last index of sum 0 hence needs to store first index
+//use hashmap to stroe 1st index
+//whenever it happens that sum has aleady been occured means added to the hash map then check the current index and first index 
+//take the difference and see if it is max or not
+//at the end return the max
