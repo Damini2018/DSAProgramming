@@ -1,0 +1,76 @@
+import java.util.*;
+public class TwoSumInArray {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    int A[]= {1, 1, 1 };
+    int B=2;
+    int C[]= twoSum(A,B);
+    
+    System.out.println(C[0]+" "+C[1]);
+  }
+  
+  public static int[] twoSum(final int[] A, int B) {
+    int min=A.length;
+    int max=A.length;
+    //flag to identify whether we have the elements which we are looking or not
+    boolean flag= false;
+            //swap to identify whether we have the elements which we are looking  are same or not if yes then their indexes needs to be swaped
+        boolean swap= false;
+        int tempI=-1;
+         int tempJ= -1;
+    
+    //insert 1st index of element in case of repeation allowed // because we need to get minimum of max index
+        HashMap<Integer, Integer> map=new HashMap();
+        for(int i=0;i<A.length;i++){
+        if(!map.containsKey(A[i])){
+        map.put(A[i],i);}
+        }
+        
+
+        for(int i=0;i<A.length;i++){
+            int num = B-A[i];
+                 tempI=i;       
+            if(map.containsKey(num) ){ 
+                int j= map.get(num);
+               tempJ=j;
+                
+                //check if the target/2 is present twice num and A[i] is same or not ex= B=2 A{1,1,1}
+                if(num==A[i]) swap=true;
+                 else swap=false;
+                 if(i>j && !swap) continue;
+                 if(swap ){
+                    if(i==j)continue;
+                    else {tempJ=i; tempI=j;}
+                 }
+                    //System.out.println("Hello got the number = "+ A[i]+"   othernumber "+num+"  with indexes i = "+i+"  and J = "+j);
+                flag =true; //means yes B-A[i]= num present
+                if(max > tempJ) {
+                    max= tempJ;
+                    min=tempI;
+                }
+                if(max == tempJ){
+                    if(tempI<min){max= tempJ;
+                     min=tempI;
+                    }
+                }
+            //min=i;
+            //max =map.get(num) ;
+            //if(min != max) break;
+            }
+                  
+        }
+            
+            //return new int[]{(min+1),(max+1)};
+           
+        if(flag)return new int[]{(min+1),(max+1)};
+        else return new int[]{};   
+        }
+}
+
+
+//Given an array of integers, find two numbers such that they add up to a specific target number.
+//The function twoSum should return indices of the two numbers such that they add up to the target, where index1 < index2. Please note that your returned answers (both index1 and index2 ) are not zero-based. Put both these numbers in order in an array and return the array from your function ( Looking at the function signature will make things clearer ). Note that, if no pair exists, return empty list.
+//If multiple solutions exist, output the one where index2 is minimum. If there are multiple solutions with the minimum index2, choose the one with minimum index1 out of them.
+//Input: [2, 7, 11, 15], target=9
+//Output: index1 = 1, index2 = 2
+
