@@ -1,0 +1,44 @@
+import java.util.*;
+public class ElementsRemovalAtLesserCost {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    int A[]= { 3, 0, 9, 7, 8  };
+    
+    System.out.println(solve(A));
+  
+  }
+  
+  public static int solve(int[] A) {
+        
+        int n= A.length;
+        Arrays.sort(A);
+        for(int i=0;i<A.length;i++){
+          System.out.print(A[i]+"  ");
+        }
+        System.out.println();
+        int sum=0;
+        for(int i=0;i<A.length;i++){
+           sum+= (n-i)*A[i]; 
+        }
+        return sum;
+     }
+}
+
+
+//problem
+//Given an integer array A of size N. In one operation, you can remove any element from the array, and the cost of this operation is the sum of all elements in the array present before this operation.
+//Find the minimum cost to remove all elements from the array.
+//Ex-Given array A = [2, 1]
+ //Remove 2 from the array => [1]. Cost of this operation is (2 + 1) = 3.
+ //Remove 1 from the array => []. Cost of this operation is (1) = 1.
+ //So, total cost is = 3 + 1 = 4.
+ 
+ //approach
+ // if we sort the array and start removing it from end then we get the less cost
+ //if A= {b,c,a}
+ // sort them is assending order A={a,b,c}
+ // removing of c= a+b+c;
+ //removing of b= a+b
+ //removing of a =a
+ //total cost = a+a+b+a+a+b+c
+ //short cut from above solution is  sum(from 0 to n-1) (length-index)*A[index]
