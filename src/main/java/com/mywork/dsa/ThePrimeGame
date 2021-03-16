@@ -1,0 +1,32 @@
+import java.util.*;
+public class ThePrimeGame {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    int A= 3;
+    int B=1;
+    System.out.println(solve(A,B));
+  }
+  
+  public static int solve(int A, int B) {
+        if(B==1) return 2;
+        if(B>1 && A%2==0) return 2;
+        else return 1;
+    
+     }
+}
+
+
+//Two players are playing a game. The rules are as follows:
+//Player 1 always moves first, and both players always play optimally.
+//Initially there are A piles, where each pile has B number of stones.
+//The players move in alternating turns. In each turn, a player can choose a pile of size x and reduce the number of stones to y, where 1 <= y < x, and x and y are coprime.
+//If the current player is unable to make a move, they lose the game.
+//Determine the winner of the game.
+
+//Approach
+//to maximize the WIN probability of himself a winner will definetly wants to reduce the pile to a number that there will be co-prime items left and simply reduce it to 1 so that the remaining number will alwasy be co-prime
+// if B=1 means no player is able to make any move hence Player 1 will losse and player 2 will win
+//if B>1 means players can move elements form pile.
+//if odd number of piles means always Player1 will be last one who will be able to move hence wineer is Player1
+//if A=even means Player2 will be last to move hence Player 2 iwll win
+
