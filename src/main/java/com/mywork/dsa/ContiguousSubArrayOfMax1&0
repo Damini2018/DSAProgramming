@@ -1,0 +1,65 @@
+import java.util.*;
+public class ContiguousSubArrayOfMax1 {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    int A[]= { 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1 };
+    -1 ,0 ,1 ,0 ,1 ,0 ,1 ,0 ,-1 ,0 ,1 ,
+   // int B=1;
+    System.out.println(solve(A));
+  }
+  
+  public static int solve(int[] A) {
+       int sum=0;
+        for(int i=0;i<A.length;i++){
+            if(A[i]==0) {sum--;}
+            else sum++;
+            A[i]=sum;
+        }
+        //System.out.println("length of A = "+A.length);
+        HashMap<Integer,Integer> map= new HashMap();
+        map.put(0,-1);
+        for(int i=0;i<A.length;i++){
+        //System.out.print(A[i]+" ,");
+            map.put(A[i],i);
+        }
+        //System.out.println();
+        int max=0;
+        for(int i=0;i<A.length;i++){
+          int j= map.get(A[i]);
+          //System.out.println("i = "+i+"  j = "+j+"  A[i] = "+A[i]+ "  max = "+max);
+          if(j!=i) max=Math.max((j-i),max);
+          //System.out.println("i = "+i+"  j = "+j+"  A[i] = "+A[i]+ "  max = "+max);
+        }
+        int k=map.get(0);
+        
+        return Math.max((k+1),max);
+    
+    }
+    
+    }
+    
+    
+//problem
+//Given an array of integers A consisting of only 0 and 1.
+//Find the maximum length of a contiguous subarray with equal number of 0 and 1.
+//apprach
+//changing the original array
+//replace 0 with -1
+//compute sum as prefix sum
+//change A[i] = sum till i
+//use a map insert where key is sum and value is index
+//first insert 0,-1 to handle cases where the subarray starts from index 0
+//insert A[i],i   /in this way we will keep record of last occurance of A[i]
+//keep a loop for A[i] check the index of A[i] in map and check for max
+//max will give subarray information present is between of array
+//k+1 will give you length form start of the array
+//return max of (max,k+1);
+
+//example where subarray is in between  
+//int A[]= {0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0 };
+  //  -1 ,-2 ,-3 ,-4 ,-5 ,-4 ,-3 ,-2 ,-1 ,-2 ,-1 ,-2 ,
+    
+//example where subarray is from start  
+//int A[]= { 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1 };
+//-1 ,0 ,1 ,0 ,1 ,0 ,1 ,0 ,-1 ,0 ,1 ,
+
