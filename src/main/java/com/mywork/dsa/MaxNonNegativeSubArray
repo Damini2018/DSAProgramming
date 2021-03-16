@@ -1,9 +1,11 @@
 //wont work if addition of array elements overflow
 import java.util.*;
 public class MaxNonNegativeSubArray {
-  public static void main(String[] args) {
+ public static void main(String[] args) {
     System.out.println("Hello World!");
-    int A[]= { -846930886, -1714636915, 424238335, -1649760492 };
+    int A[]= {  756898537, -1973594324, -2038664370, -184803526, 1424268980 };
+    //2,417,147,951
+    //1,688,136,404
     
     //System.out.println(solve(A));
     int c[]= solve(A);
@@ -11,62 +13,54 @@ public class MaxNonNegativeSubArray {
     for(int i=0;i<c.length;i++){
      System.out.print(c[i]+"  ");
     }
-    }
+   // System.out.println(C[0]+" "+C[1]);
+  }
   
   public static int[] solve(int[] A) {
-        int locSt=0, st=0;
+      int locSt=0, st=0;
         int locMax=0,max=0;
         int n=A.length;
-        int sum=-1,locSum=0;
-        if(A[0]<0){
-            locSt=1; st=1; max=0;
-        }
-        for(int i=0;i<n;i++){
+        long sum=-1,locSum=0;
+        
+       
+        for(int i=0;i<n;i++)
+        {
             if(A[i]<0){
-                A[i]=0;
-                if(locSum>sum){sum=locSum;
+            A[i]=0;
+            locSt=i+1;
+            locMax=0;
+            locSum=0;
+            }
+            else {
+                locSum+=A[i];
+                locMax++;
+                System.out.println("the locSum is "+locSum+"  locMax= "+locMax +"   local start = "+locSt);
+            }
+            if(locSum>sum || ((locSum==sum) &&(locMax>max))){
+                    sum=locSum;
                     st=locSt;
                     max=locMax;
                 }
-                else if(locSum==sum){
-                if(locMax>max){max=locMax;
-                    st=locSt;
-                }
-                    
-                }
-                locSt=i+1;
-                locMax=0;
-            }
-            else {
-                if(i-1 >=0)
-                   {
-                   A[i]=A[i]+A[i-1];
-                  }
-                   locSum=A[i];
-                locMax++;
-            }
         }
-        System.out.println("hello Original array is ");
-         for(int i=0;i<A.length;i++){
-     System.out.print(A[i]+"  ");
-    }
+        
+                   
+        System.out.println();
         System.out.println("hello the max = " +max+"  with start index = "+st);
         int ans[]= new int[max];
+          
         for(int i=st;i<(max+st);i++){
-            if((i-1)<0) ans[i-st]=A[i];
-            else
-            {
-            ans[i-st]=A[i]-A[i-1];}
+            ans[i-st]=A[i];
         }
         return ans;
      }
 }
+
 
 //Given an array of integers, A of length N, find out the maximum sum sub-array of non negative numbers from A.
 //The sub-array should be contiguous i.e., a sub-array created by choosing the second and fourth element and skipping the third element is invalid.
 //Maximum sub-array is defined in terms of the sum of the elements in the sub-array.
 //Find and return the required subarray.
 
-//approach is using the same given array and convert it to prefix sum array
-//whenever A[i] is negative then change it to 0 and start recodring all locla start, start,local sum, sum, local max, max
-//keep in mind the calculation for index 0;
+//approach is using the same given array and convert element to 0 if negative
+//whenever A[i] is negative then change it to 0 and start recodring all locla start, start,local sum, sum, local max, max keep on assigning all while iterating each elemnt
+//use appropriate data type for variable
