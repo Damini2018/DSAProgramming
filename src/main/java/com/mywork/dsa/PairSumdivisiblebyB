@@ -64,7 +64,7 @@ int count=0;
 //approach2
 //take %B of each A[i]
 //create a HashMap which will hold all the numbers and their counts
-// if A[i]==0 number is divisible by B so it will be = (total count-1) addition type factorial
-//if(A[i]==B-A[i]) then also take (total count-1) addition type factorial ex= B= 4, then for A[i]=2 B-A[i]=2 .lets say total 5 occurance are there of 2 then the count =4+3+2+1
+// if A[i]==0 number is divisible by B so it will be = (total count-1) factorial type addition
+//if(A[i]==B-A[i]) then also take (total count-1)  factorial type addition ex= B= 4, then for A[i]=2 B-A[i]=2 .lets say total 5 occurance are there of 2 then the count =4+3+2+1
 //else count(A[i]) * count(B-A[i]) A[i]=1,4
 //B-A[i]=3,5 then 5*4=20ways to pair them
