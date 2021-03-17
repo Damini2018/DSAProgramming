@@ -10,10 +10,7 @@ public class SortPartialUnsortedArray {
   
   public static int solve(int[] A) {
       
-      int B[]= new int[A.length];
-      for(int i=0;i<A.length;i++)
-        B[i]=A[i];
-        Arrays.sort(A);
+    
         
         for(int i=0;i<A.length;i++)
          System.out.print(B[i]+",  ");
@@ -23,23 +20,33 @@ public class SortPartialUnsortedArray {
          System.out.print(A[i]+",  ");
           System.out.println();
          System.out.println();
-       v
-        int p=-1;int q=-1;
+       
+        int B[]= new int[A.length];
+      for(int i=0;i<A.length;i++)
+        B[i]=A[i];
+        Arrays.sort(A);
+       // for(int i=0;i<A.length;i++)
+         //System.out.print(A[i]+",  ");
+        int max=0;int p=-1;int q=-1;
         for(int i=0;i<A.length;i++){
             if(A[i] != B[i]) {
             if(p==-1) p=i;
             q=i;
-            System.out.println(B[i]+", p =  "+p+"  q = "+q);
+            //System.out.println(B[i]+", p =  "+p+"  q = "+q);
         
             }
-            
         }
-         System.out.println();
-        return q-p+1;
+    if(p==q) return 0;
+    return q-p+1;
+       //return q-p+1;
     
     }
     
     }
 //You are given an integer array A having N integers.
-
 //You have to find the minimum length subarray A[l..r] such that sorting this subarray makes the whole array sorted.
+//approach
+//create another Array which is copy of original array
+//sort the original array and see where the first and last differce is coming 
+//if there is no diffenrece then return 0
+//else return last-first+1;
