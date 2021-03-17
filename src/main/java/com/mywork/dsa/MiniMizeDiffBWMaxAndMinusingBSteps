@@ -1,0 +1,110 @@
+import java.util.*;
+public class MiniMizeDiffBWMaxAndMinusingBSteps {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    int []A = {9 ,9,9};
+int B = 9;
+System.out.println(solve(A,B));
+  }
+  public static  int solve(int[] A, int B) {
+        int min=Integer.MAX_VALUE;
+        int max=Integer.MIN_VALUE;
+        HashMap<Integer,Integer> map= new HashMap();
+        for(int i=0;i<A.length;i++){
+            if(map.containsKey(A[i])) {
+            
+                int v=map.get(A[i]);
+                System.out.println("present "+A[i]+ "   v ="+v);
+                map.put(A[i],++v);
+            }
+            else
+            { 
+            System.out.println("new "+A[i]);
+                map.put(A[i],1);
+                if(max<A[i]) max=A[i];
+                if(min>A[i]) min=A[i];
+            }
+        }
+        System.out.println("hello min ="+min );
+            System.out.println("hello max ="+max);
+        boolean minP=false;
+        boolean maxP=false;
+        int minV=0;
+        int maxV=0;
+        int diff=Integer.MAX_VALUE;
+        while(B>0){
+            minP = map.containsKey(min+1);
+            maxP = map.containsKey(max-1);
+            minV = map.get(min);
+            maxV = map.get(max);
+            if(maxV ==A.length || minV==A.length) {diff=0;break;}
+            
+            System.out.println("hello min ="+min +  "  hello minV ="+minV);
+            System.out.println("hello max ="+max+ "   hello minV ="+minV);
+            System.out.println("B = "+B);
+            System.out.println("hello minV ="+min);
+            System.out.println("hello maxV ="+max);
+            
+            
+            
+            if(minV<maxV){
+            
+                if(!minP && minV<=B && minV<=maxV){
+                System.out.println("minV < maxV   if " );
+                    min=min+1;
+                    map.put(min,minV);
+                    B=B-minV;
+                }
+                 else if(minV<=maxV && minV<=B){
+                 System.out.println("minV < maxV   else ");
+                    B=B-minV;
+                    min++;
+                    minV+=map.get(min);
+                    map.put(min,minV);
+                }
+            }
+            else{
+                if(!maxP && maxV<=B && maxV<=minV){
+                 System.out.println("minV > maxV   if " );
+                    max=max-1;
+                    map.put(max,maxV);
+                    B=B-maxV;
+                }
+               
+                else if(maxV<=minV && maxV<=B){
+                 System.out.println("minV > maxV   else ");
+                    B=B-maxV;
+                    max--;
+                    maxV+=map.get(max);
+                    map.put(max,maxV);
+                }
+                
+            }
+            
+            //B=0;
+			  if(Math.abs(max-min) < diff) diff=Math.abs(max-min);
+            if(diff==0) break;
+            if(maxV>B && minV>B) break;
+            System.out.println();
+            System.out.println("diff = "+diff);
+            
+            
+        }
+        
+        return diff; 
+        }
+}
+
+//Given an array of integers A of size, N. Minimize the absolute difference between the maximum and minimum element of the array.
+//You can perform two types of operations at most B times in total to change the values in the array.
+//Multiple operations can be performed on the same element.
+//Increment : A[i] -> A[i] + 1.
+//Decrement : A[i] -> A[i] - 1.
+//Return the minimum difference possible.
+
+//approach
+//keep track of max and min while entering it to map ,keep count of each vaule in map value;
+//if map does not have element min+1 or max-1 then simply increment min or max whose count is minimum and change it to the next possible element either min+1 or max-1 and update the count is map
+//update count of B also
+//else if map have values min+1 and max-1 then check count of min and max whose value is less do operation with them update all 
+//if all elements are same then no need of nay operation simply return 0
