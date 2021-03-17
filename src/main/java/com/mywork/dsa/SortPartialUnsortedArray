@@ -1,0 +1,45 @@
+import java.util.*;
+public class SortPartialUnsortedArray {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    int A[]= {-999719982, -997706828, -997691325, -995251776, -990849335, -988481354, -981629779, -868737744, -120351267, 64788082, 228415163, 614611823, 640974381, -452682129, -965876048, 783056532, -453532535, 833834653, -987591077, 817673675, -544684968, -401051410, 132395537, 572296099, 353540327, -703539499, -766132674, 767205598, -279256033, 315415674, -152640056, -464821584, -167380503, -469901855, 559665312, 48354254, 170817182, -561161308, 83573785, 140331344, 737127606, 99308049, -43574593, 495163194, 595089965, -114946743, 616204212, 766575935, 967480596, 996730531, 998082304, 998152496, 998830044, 999684899, 999958768, 999995103, 999997947, 999998705, 999998949, 999999849, 999999855, 999999857, 999999974, 999999977, 999999999, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000 };
+   // -1 ,0 ,1 ,0 ,1 ,0 ,1 ,0 ,-1 ,0 ,1 ,
+   // int B=1;
+    System.out.println(solve(A));
+  }
+  
+  public static int solve(int[] A) {
+      
+      int B[]= new int[A.length];
+      for(int i=0;i<A.length;i++)
+        B[i]=A[i];
+        Arrays.sort(A);
+        
+        for(int i=0;i<A.length;i++)
+         System.out.print(B[i]+",  ");
+         System.out.println();
+         System.out.println();
+         for(int i=0;i<A.length;i++)
+         System.out.print(A[i]+",  ");
+          System.out.println();
+         System.out.println();
+       v
+        int p=-1;int q=-1;
+        for(int i=0;i<A.length;i++){
+            if(A[i] != B[i]) {
+            if(p==-1) p=i;
+            q=i;
+            System.out.println(B[i]+", p =  "+p+"  q = "+q);
+        
+            }
+            
+        }
+         System.out.println();
+        return q-p+1;
+    
+    }
+    
+    }
+//You are given an integer array A having N integers.
+
+//You have to find the minimum length subarray A[l..r] such that sorting this subarray makes the whole array sorted.
