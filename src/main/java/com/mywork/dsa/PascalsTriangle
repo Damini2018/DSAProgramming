@@ -1,0 +1,40 @@
+public class Main {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    int c[][]= PascalTriangle(3);
+    for(int i=0;i<c.length;i++){
+     for(int j=0;j<c[i].length;j++){
+    System.out.print(c[i][j]+" ");
+    }
+    System.out.println();
+    }
+  }
+  
+  public static   int[][] PascalTriangle(int A) {
+       ;
+        int a[][]= new int[A+1][];
+        for(int i=0;i<A+1;i++){
+            a[i]=new int[i+1];
+        }
+        a[0][0]=1;
+        if(A==0) return a;
+        a[1][0]=1;
+        a[1][1]=1;
+        if(A==1) return a;
+        a[2]=new int[] {1,2,1};
+        if(A==2) return a;
+        for(int i=2;i<A+1;i++){
+            for(int j=0;j<a[i].length;j++){
+                if(j==0 || j==(a[i].length-1)) a[i][j]=1;
+                else a[i][j]= (a[i-1][j-1]+a[i-1][j]);
+            }
+        }
+       return a;
+       }
+}
+
+k=row
+k=0  triangle will have 1 elemnet =1
+k=1  {1},{1,1}
+k=2  {1},{1,1},{1,2,1}
+a[i][j]= sum of upper 2 elements
