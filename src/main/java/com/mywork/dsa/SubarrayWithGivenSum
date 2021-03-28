@@ -1,0 +1,45 @@
+import java.util.*;
+public class SubarrayWithGivenSum {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    int A[]={5,10,20,100,105};
+    int B=110;
+    int c[]= solve(A,B);
+    for(int i=0;i<c.length;i++){
+    System.out.print(c[i]+"  ");
+    }
+  }
+  public static  int[] solve(int[] A, int B) {
+        int i=1;int j=0;int sum=A[0];
+        while(i<A.length && j<A.length ){
+            if(sum==B) break;
+           // if(i>preI)sum+=A[i];
+            if(sum<B) {  sum+=A[i];i++;}
+            else if(sum>B) {sum-=A[j];j++; }
+            
+        }
+        if(sum==B) {
+            int ans[] = new int [i-j];
+            
+            for(int p=j;p<i;p++){
+                ans[p-j]=A[p];
+            }
+            return ans;
+        }
+        else return new int[]{-1};
+        
+        //return new int[]{-1};
+    }
+}
+
+
+
+//Given an array of positive integers A and an integer B, find and return first continuous subarray which adds to B.
+//If the answer does not exist return an array with a single element "-1".
+//First sub-array means the sub-array for which starting index in minimum.
+
+//approach 
+//we can use 2 pointer method
+//start i=1,sum=A[0] and incement it when sum< B
+//j=0 increment j when sum > B , inthis we we will remove jth element from subarray
+//break when sum==B or whenever either i or j reaches A.length
