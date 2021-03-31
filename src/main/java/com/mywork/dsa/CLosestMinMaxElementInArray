@@ -1,0 +1,33 @@
+import java.util.* ;
+
+public class CLosestMinMaxElementInArray {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    int A[]= { 4, 4, 4, 4, 4 };
+    System.out.println(solve(A));
+    
+  }
+  public static int solve(int[] A) {
+        int min=A[0];
+        int max=A[1];
+        int mini=-1;int maxi=-1;
+        int ans= A.length;
+        for(int i=0;i<A.length;i++){
+            if(min>A[i]){min=A[i];  mini=i; ans= A.length;}
+            if(max<A[i]){max=A[i]; maxi=i; ans= A.length;}
+            if(A[i]==min) mini=i;
+             if(A[i]==max) maxi=i;
+            ans =Math.min(ans,Math.abs(mini-maxi));
+        }
+        System.out.println("Min = "+min+"   mini = "+mini+"     max = "+max+"    maxi = "+maxi);
+        return ans+1;
+    }
+}
+
+
+//Closest MinMax
+//Problem Description
+//Given an array A. Find the size of the smallest subarray such that it contains atleast one occurrence of the maximum value of the array
+//and atleast one occurrence of the minimum value of the array.
+//get min and max element , get their indexes and each time compare the length with the indexes of those min max elements
+//return 
