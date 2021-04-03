@@ -1,0 +1,25 @@
+public class ReverseBits {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    long a=3;
+    System.out.println(reverse(a));
+  }
+  	public static long reverse(long a) {
+	    int ans[]= new int[32];int i=0;long sum=0; int power=31;
+	    while(a>0){
+	        //ans[i]= ;
+	        sum+= (a & 1)*1<<power;
+	        a=a>>1;
+	        i++;
+	        power--;
+	    }
+	    return sum;
+	}
+}
+
+//ans = 3221225472
+
+
+//Reverse the bits of an 32 bit unsigned integer A.
+//   3  ==  00000000000000000000000000000011    
+=>   reverse(3) ==   11000000000000000000000000000000
