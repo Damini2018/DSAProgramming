@@ -1,0 +1,32 @@
+import java.util.*;
+public class SortedMatrixSearch {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    int A[][]={{1,   3,  5,  7},
+      {10, 11, 16, 20},
+      {23, 30, 34, 50} };
+      int B=3;
+      System.out.println(searchMatrix(A,B));
+  }
+   public static int searchMatrix(int[][] A, int B) {
+        int low=0;int high=A.length*A[0].length-1;
+        int ans=-1;
+        while(low<=high){
+            int mid=((high-low)/2)+low;
+            int r=(mid/A[0].length);
+            int c=(mid%A[0].length);
+            if(A[r][c]<B) low=mid+1;
+            else{ans=mid; high=mid-1;}
+        }
+        if((ans==-1) || A[ans/A[0].length][ans%A[0].length] !=B) return 0;
+        return 1;
+    }
+}
+
+//approach
+//as the matrix is sorted rowwise also
+//if we flatten the matrix then we will get a sorted array
+//whenever it is a sorted array best solution is sorted array
+//we can obtain the row and column index using the index mid 
+//row = index/A column length   column= index% A column length
+// if you get answer then ok else update the low and high index and loop
