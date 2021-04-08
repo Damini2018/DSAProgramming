@@ -1,4 +1,14 @@
-int count=0;
+import java.util.*;
+
+public class PairSumdivisiblebyB {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    int A[]= {1,2,3,4,5};
+    int B= 2;
+    System.out.println(solve(A,B));
+  }
+  public static int solve(int[] A, int B) {
+        int count=0;
         HashMap<Integer,Integer> map= new HashMap();
         for(int i=0;i<A.length;i++){
             A[i]= A[i]%B;
@@ -50,6 +60,7 @@ int count=0;
         return count%1000000007;
     }
 }
+
     
     
     
